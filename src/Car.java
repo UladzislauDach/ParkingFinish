@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private String nameCar;
     private String colourCar;
@@ -83,5 +83,10 @@ public class Car {
                 ", trailer=" + trailer +
                 ", weight=" + weight +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return 0;
     }
 }

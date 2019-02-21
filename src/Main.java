@@ -1,6 +1,4 @@
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -22,7 +20,9 @@ public class Main {
         parkings.addCar(volkswagen);
         parkings.addCar(audiA4);
         parkings.addCar(bmw39);
-       // Collections.sort(parkings.getCars());
+        parkings.addCar(kiaTheBest);
+
+        Collections.sort(parkings.getCars());
         Comparator<Car> nameComparator = new Comparator<Car>() {
             @Override
             public int compare(Car o1, Car o2) {
@@ -40,21 +40,48 @@ public class Main {
         };
         Collections.sort(parkings.getCars(), nameComparator);
 
-        System.out.println(parkings);
 
-        System.out.println(sortColour(( parkings.getCars())));
 
-        System.out.println(sortTransmission(( parkings.getCars())));
+        System.out.println("Введите количество мест на парковке");
+       Scanner sc = new Scanner(System.in);
+        int mesta = sc.nextInt();
 
-        Parking.vacancies(parkings.getCars());
+        Parking.maxSize(parkings.getCars() , mesta);
 
-        System.out.println(parkings);
+        System.out.println("Введите на сколько увеличить размер парковки");
+        Scanner scanner = new Scanner(System.in);
+        int number =scanner.nextInt();
+        System.out.println(Parking.parkingExtension( mesta , number));
+
+        sortColour((parkings.getCars()));
+
+        sortTransmission((parkings.getCars()));
+
+        System.out.println(indenticalCars(parkings.getCars()));
+
+        Parking.removeWeightTransmission(parkings.getCars());
+
 
     }
+
+    private static int indenticalCars(List<Car> parking) {
+        int counter = 0;
+        for (int i = 0; i < parking.size(); i++) {
+            for (int j = 0; j < parking.size(); j++) {
+                if (parking.get(i).getNameCar().equals(parking.get(j).getNameCar()) && parking.get(i).getColourCar().equals(parking.get(j).getColourCar())) {
+                    counter++;
+                }
+            }
+
+        }
+        return (counter - parking.size());
+    }
+
+
     public static int sortTransmission(List<Car> parkings) {
         int quantityAutoTransmission = 0;
-        for (Car car: parkings) {
-            if(car.isTransmission() == true){
+        for (Car car : parkings) {
+            if (car.isTransmission()) {
                 quantityAutoTransmission++;
             }
 
@@ -64,8 +91,8 @@ public class Main {
 
     public static int sortColour(List<Car> parkings) {
         int counter = 0;
-        for (Car h: parkings) {
-            if(h.getColourCar() == "white"){
+        for (Car h : parkings) {
+            if (h.getColourCar().equals("white")) {
                 counter++;
             }
         }
