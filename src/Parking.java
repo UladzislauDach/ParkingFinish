@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Parking {
 
@@ -34,6 +35,21 @@ public class Parking {
 
     public void removeCar(Car car){
         cars.remove(car);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Parking parking = (Parking) o;
+        return space == parking.space &&
+                Objects.equals(cars, parking.cars);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(space, cars);
     }
 
     @Override
