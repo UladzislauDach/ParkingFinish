@@ -7,11 +7,10 @@ public class Parking {
    private int space;
    private List<Car> cars = new ArrayList<>();
 
-    public Parking(List<Car> cars , int space) {
-        this.cars = cars;
+    public Parking(int space) {
         this.space = space;
     }
-    public Parking(){}
+
 
     public int getSpace() {
         return space;
@@ -29,8 +28,10 @@ public class Parking {
         this.cars = cars;
     }
 
-    public void addCar(Car car){
-        cars.add(car);
+    public void addCar(Car car ){
+        if(cars.size() < space){
+            cars.add(car);
+        }
     }
 
     public void removeCar(Car car){

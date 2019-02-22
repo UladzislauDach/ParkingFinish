@@ -12,7 +12,7 @@ public class Main {
         Car kiaTheBest = new Car("kia", "green", true, false, 2000);
         Car audiA4 = new Car("audi", "white", false, true, 2500);
 
-        Parking parkings = new Parking();
+        Parking parkings = new Parking(5);
 
         parkings.addCar(bmw34);
         parkings.addCar(audi);
