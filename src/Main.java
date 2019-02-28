@@ -11,6 +11,7 @@ public class Main {
         Car bmw39 = new Car("bmw", "black", false, false, 1600);
         Car kiaTheBest = new Car("kia", "green", true, false, 2000);
         Car audiA4 = new Car("audi", "white", false, true, 2500);
+        Car audiA8 = new Car("audi", "black", false, false, 2900);
 
         Parking parkings = new Parking(5);
 
@@ -21,6 +22,7 @@ public class Main {
         parkings.addCar(audiA4);
         parkings.addCar(bmw39);
         parkings.addCar(kiaTheBest);
+        parkings.addCar(audiA8);
 
         Collections.sort(parkings.getCars());
         Comparator<Car> nameComparator = new Comparator<Car>() {
